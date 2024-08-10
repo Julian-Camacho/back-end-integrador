@@ -16,6 +16,7 @@ async function getUsers(req, res) {
     res.status(500).send({
       ok: false,
       message: "Error al obtener los usuarios",
+      error,
     });
   }
 }
@@ -39,6 +40,7 @@ async function getUserById(req, res) {
     res.status(500).send({
       ok: false,
       message: "Error al obtener el usuario",
+      error,
     });
   }
 }
@@ -61,6 +63,7 @@ async function postUser(req, res) {
     res.status(500).send({
       ok: false,
       message: "Error al crear el usuario",
+      error,
     });
   }
 }
@@ -97,6 +100,7 @@ async function putUser(req, res) {
     res.status(500).send({
       ok: false,
       message: "Error al actualizar el usuario",
+      error,
     });
   }
 }
@@ -120,6 +124,7 @@ async function deleteUser(req, res) {
     res.status(500).send({
       ok: false,
       message: "Error al eliminar el usuario",
+      error,
     });
   }
 }
@@ -162,6 +167,7 @@ async function login(req, res) {
     res.status(500).send({
       ok: false,
       message: "Error al iniciar sesión",
+      error,
     });
   }
 }

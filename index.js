@@ -2,7 +2,7 @@ require('dotenv').config();
 const mongoose = require('mongoose');
 const app = require('./app');
 
-mongoose.connect(process.env.MONGODB_URI)
+mongoose.connect(process.env.MONGO_URI)
 .then(() => {
     console.log('\x1b[35m Conectado a la base de datos');
     app.listen(process.env.PORT, () => {
