@@ -3,7 +3,7 @@ const router = express.Router();
 const productsController = require("../controllers/products.controller");
 const upload = require("../middlewares/upload");
 const auth = require("../middlewares/auth");
-const admin = require("../middlewares/admin");
+const admin = require("../middlewares/isAdmin");
 
 // GET PRODUCTS
 router.get("/products", productsController.getProducts);
@@ -24,3 +24,5 @@ router.put(
 );
 // DELETE PRODUCTS
 router.delete("/products/:id", [auth, admin], productsController.deleteProduct);
+
+module.exports = router;

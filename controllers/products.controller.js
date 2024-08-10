@@ -1,4 +1,4 @@
-const product = require("../models/products.model");
+const product = require("../models/product.model");
 
 async function getProducts(req, res) {
   try {
@@ -20,8 +20,8 @@ async function getProducts(req, res) {
 async function getProductById(req, res) {
   try {
     const id = req.params.id;
-    const product = await product.findById(id);
-    if (!product) {
+    const prod = await product.findById(id);
+    if (!prod) {
       return res.status(404).send({
         ok: false,
         message: "Producto no encontrado",
@@ -30,7 +30,7 @@ async function getProductById(req, res) {
     res.status(200).send({
       ok: true,
       message: "Producto obtenido con éxito",
-      product,
+      prod,
     });
   } catch (error) {
     res.status(500).send({
@@ -43,17 +43,18 @@ async function getProductById(req, res) {
 
 async function createProduct(req, res) {
   try {
-    const product = new product(req.body);
+    const prod = new product(req.body);
     if (req.file?.filename) {
-      product.picture = req.file.filename;
+      prod.picture = req.file.filename;
     }
-    const newProduct = await product.save();
+    const newProduct = await prod.save();
     res.status(201).send({
       ok: true,
       message: "Producto creado con éxito",
-      product: newProduct,
+      newProduct,
     });
   } catch (error) {
+    console.log(error);
     res.status(500).send({
       ok: false,
       message: "No se pudo crear el producto",
