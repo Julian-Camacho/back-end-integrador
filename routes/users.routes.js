@@ -2,7 +2,6 @@ const express = require('express');
 const router = express.Router();
 const usersController = require('../controllers/users.controller');
 const auth = require('../middlewares/auth');
-const admin = require('../middlewares/isAdmin');
 const isAdmin = require('../middlewares/isAdmin');
 
 // GET USERS
