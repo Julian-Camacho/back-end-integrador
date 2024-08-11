@@ -32,7 +32,8 @@ const productSchema = new Schema({
   picture: {
     type: String,
     trim: true,
-    default: "default.jpg",
+    default:
+      "https://nayemdevs.com/wp-content/uploads/2020/03/default-product-image.png",
   },
   createdAt: {
     type: Date,
