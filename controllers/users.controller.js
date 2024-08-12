@@ -52,6 +52,9 @@ async function postUser(req, res) {
     } // Si el usuario no es admin, no puede crear un admin
     req.body.password = await bcrypt.hash(req.body.password, saltRounds);
     const user = new User(req.body);
+    if (req.file?.filename) {
+      user.image = req.file.filename;
+    }
     const newUser = await user.save();
     newUser.password = undefined; // Evitamos que llegue al front el password
     res.status(201).send({
@@ -78,6 +81,11 @@ async function putUser(req, res) {
       });
     }
     const newData = req.body;
+    if (req.file?.filename) {
+      newData.image = req.file.filename;
+    } else {
+      delete newData.image;
+    }
     newData.password = await bcrypt.hash(newData.password, saltRounds);
     if (req.user.role !== "ADMIN_ROLE") {
       newData.role = "CLIENT_ROLE";
