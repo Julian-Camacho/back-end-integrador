@@ -4,7 +4,7 @@ const cors = require('cors');
 
 const apiRoutes = require('./routes/api.routes');
 
-app.use(express.static('public'));
+app.use(express.static('uploads'));
 
 app.use(cors());
 

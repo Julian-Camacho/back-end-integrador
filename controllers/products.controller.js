@@ -2,7 +2,7 @@ const product = require("../models/product.model");
 
 async function getProducts(req, res) {
   try {
-    const products = await product.find();
+    const products = await product.find().populate("category", "name");
     res.status(200).send({
       ok: true,
       message: "Productos obtenidos con éxito",
@@ -45,7 +45,7 @@ async function createProduct(req, res) {
   try {
     const prod = new product(req.body);
     if (req.file?.filename) {
-      prod.picture = req.file.filename;
+      prod.image = req.file.filename;
     }
     const newProduct = await prod.save();
     res.status(201).send({
@@ -68,9 +68,9 @@ async function updateProduct(req, res) {
     const id = req.params.id;
     const newProduct = req.body;
     if (req.file?.filename) {
-      newProduct.picture = req.file.filename;
+      newProduct.image = req.file.filename;
     } else {
-      delete newProduct.picture;
+      delete newProduct.image;
     }
     const updatedProduct = await product.findByIdAndUpdate(id, newProduct, {
       new: true,

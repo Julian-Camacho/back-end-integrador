@@ -29,11 +29,9 @@ const productSchema = new Schema({
     maxlength: 500,
     trim: true,
   },
-  picture: {
+  image: {
     type: String,
     trim: true,
-    default:
-      "https://nayemdevs.com/wp-content/uploads/2020/03/default-product-image.png",
   },
   createdAt: {
     type: Date,

@@ -7,6 +7,6 @@ const admin = require("../middlewares/isAdmin");
 // GET ORDERS
 router.get("/orders", [auth, admin], ordersController.getOrders);
 // POST ORDERS
-router.post("/orders", auth, ordersController.createOrder);
+router.post("/orders", auth, ordersController.postOrders);
 
 module.exports = router;

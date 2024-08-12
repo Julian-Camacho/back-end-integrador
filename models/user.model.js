@@ -28,7 +28,7 @@ const userSchema = new schema({
     maxlength: 100,
     trim: true,
   },
-  avatar: {
+  image: {
     type: String,
     trim: true,
     default:
