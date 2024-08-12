@@ -2,7 +2,7 @@ const product = require("../models/product.model");
 
 async function getProducts(req, res) {
   try {
-    const products = await product.find().populate("category", "name");
+    const products = await product.find().populate("category", "viewValue");
     res.status(200).send({
       ok: true,
       message: "Productos obtenidos con éxito",
